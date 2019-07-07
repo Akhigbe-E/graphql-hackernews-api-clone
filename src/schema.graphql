@@ -9,7 +9,7 @@ enum LinkOrderByInput {
 
 type Query{
         info: String!,
-        feed(filter: String!, skip: Int!, first: Int!, orderBy: LinkOrderByInput): Feed!
+        feed(filter: String, skip: Int, first: Int, orderBy: LinkOrderByInput): Feed!
         link(id: ID!): Link!
 },
 type Feed{
