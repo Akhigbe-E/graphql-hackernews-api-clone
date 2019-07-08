@@ -6,7 +6,7 @@ function getUserId(context) {
 
   console.log("good here...");
   if (Authorization) {
-    const token = Authorization.replace("Bearer ", "");
+    const token = Authorization.replace("Bearer: ", "");
     const { userId } = jwt.verify(token, APP_SECRET);
     return userId;
   }
