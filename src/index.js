@@ -1,5 +1,6 @@
 const { GraphQLServer } = require("graphql-yoga");
 const { prisma } = require("./generated/prisma-client/index");
+const path = require("path");
 
 const Query = require("../resolvers/Query");
 const Mutation = require("../resolvers/Mutation");
@@ -17,7 +18,14 @@ const resolvers = {
   Link
 };
 
-const servers = new GraphQLServer({
+const PORT = process.env.PORT || 4000;
+// const options = {
+//   port: PORT,
+//   endpoint: "/graphql",
+//   playground: "/graphql"
+// };
+
+const server = new GraphQLServer({
   typeDefs: "./schema.graphql",
   resolvers,
   context: request => {
@@ -28,4 +36,5 @@ const servers = new GraphQLServer({
   }
 });
 
-servers.start(() => console.log(`Hello from the server side...`));
+server.start(() => console.log(`Hello from the server side...`));
+// server.start(options, () => console.log(`Hello from the server side...`));
